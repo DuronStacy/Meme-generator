@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="POST" action="./controllers/create.php" >
+<form method="POST" action="./index.php" >
     <!-- <img src="{{data}}" alt=""> -->
 
     <img src="{{data}}" alt=""> 
     <input type="text" name ="top-text" maxlength="33">
-    <input type="text" id="bottom-text" maxlength="33">
+    <input type="text" name="bottom-text" id="bottom-text" maxlength="33">
     <input type="hidden" name="path" value="{{data}}">
     <input type="submit" value="save" id="save">
  

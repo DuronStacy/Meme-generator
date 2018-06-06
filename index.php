@@ -15,8 +15,12 @@ switch (true) {
 	ctrlSelectImage($twig, $connect, $_GET['image']);
 	break;
 
-	case !empty($_POST):
+	case !empty($_POST['categorie']):
 	ctrlListByCategorie($twig, $connect, $_POST);
+	break;
+
+	case isset($_POST['top-text']):
+	ctrlCreateMeme($twig, $connect, $_POST);
 	break;
 	
 	default:
