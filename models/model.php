@@ -34,17 +34,12 @@ function listCategories($connect, $categorie){
 	return $data;
 }
 
-function create($connect, $image){
+function select($connect, $image){
 
-	$statement = $connect->prepare("SELECT * FROM images WHERE images.filename = ?");
-	$statement->execute([$image]);
-	$data = $statement->fetch();
 	$path = "./assets/img/upload/";
 	$data = $path.$image;
 	$data = resize($data);
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
+
 	return $data;
 }
 
@@ -56,18 +51,14 @@ function lastMemes($connect){
 	$statement->execute();
 	$data = $statement->fetchAll();
 
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
 	return $data;
 }
 function resize($path){
+
 	$filename = basename($path);
 	$info = pathinfo($filename);
 	$file_name =  basename($filename,'.'.$info['extension']);
 
-
-// RESIZE IMAGE //
 	$img = $path;
 	$temp_img = './assets/img/resized_'.$file_name.'.'.$info['extension'];
 	$width = 400;
@@ -139,7 +130,7 @@ function createMeme($connect, $posted){
 
 	$font ='./assets/fonts/arial.ttf';
 
-	imagettftext($im, 22, 0, 15, 40, $white, $font, $text);
+	imagettftext($im, 22, 0, 5, 40, $white, $font, $text);
 
 	$memeName = time();
 

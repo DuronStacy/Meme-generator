@@ -8,7 +8,7 @@ function ctrlListImages($twig, $connect) {
 }
 
 function ctrlSelectImage($twig, $connect, $image){
-	echo $twig->render('create.html', ['data' => create($connect, $image)]);
+	echo $twig->render('create.html', ['data' => select($connect, $image)]);
 }
 
 function ctrlListByCategorie($twig, $connect, $categorie){

@@ -1,32 +1,41 @@
 
-function drawText(){
-    var text = document.getElementById('saisie').value;
+function drawTextup(){
+    var text = document.getElementById('top-text').value;
     text = text.toUpperCase();
     document.getElementById('text').innerHTML = text;
-    smallLetter(text);
+    var x = document.getElementById('image').naturalWidth;
+    var y = document.getElementById('image').naturalHeight;
+    var down = -(y+22)+ "px";
+    console.log(down);
+    document.getElementById('textoverimageUp').style.marginTop = down;
+
 }
 
-// function smallLetter(text){
-//     var frame = document.getElementById('text').innerText;
-//     var measure = text.length;
+function drawTextbottom(){
+    var text = document.getElementById('bottom-text').value;
+    text = text.toUpperCase();
+    document.getElementById('text2').innerHTML = text;
+    var y = document.getElementById('image').naturalHeight;
+    console.log(y);
+    var up = -(y-348);
+    console.log(up);
+    document.getElementById('textoverimageUp').style.marginTop = up;
 
-//     console.log(text.length);
-//     if (text.length > 9) {
-//         document.getElementById('text').style.fontSize = "3em";
-//         document.getElementById('textoverimage').style.marginTop = "-120px";
-//     }if(text.length > 12){
-//         document.getElementById('text').style.fontSize = "2.2em";
-//         document.getElementById('textoverimage').style.marginTop = "-130px";
-//     }
-  
-// }
+}
 
 document.getElementById("changeColor").addEventListener("click", function(){
     var text = document.getElementById('text');
+    var text2 = document.getElementById('text2');
+
     if (text.style.color == "white") {
         text.style.color = "black";
     }else{
         text.style.color = "white";
     }
 
+    if (text2.style.color == "white") {
+        text2.style.color = "black";
+    }else{
+        text2.style.color = "white";
+    }
 });
