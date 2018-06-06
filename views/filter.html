@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">
+
+	<button type="submit" name="happy" value="happy">Happy</button>
+	<button type="submit" name="sad" value="sad">Sad</button>
+	<button type="submit" name="angry" value="angry">Angry</button>
+
+</form>
+
+{% for image in data %}
+
+<a href="?image={{image.filename}}"><img src="./assets/img/upload/{{ image.filename }}" alt=""></a>
+
+{% endfor %}
+
+{% endblock %}

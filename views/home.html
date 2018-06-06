@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST">
+
+	<button type="submit" name="happy" value="happy">Happy</button>
+	<button type="submit" name="sad" value="sad">Sad</button>
+	<button type="submit" name="angry" value="angry">Angry</button>
+
+</form>
+
+{% for image in data %}
+
+<div>
+<a href="?image={{image.filename}}"><img style='height: 500px; width: 500px; object-fit: contain' src="./assets/img/upload/{{ image.filename }}"></a>
+</div>
+
+
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+

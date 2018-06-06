@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="./controllers/create.php" >
+    <!-- <img src="{{data}}" alt=""> -->
+
+    <img src="{{data}}" alt=""> 
+    <input type="text" name ="top-text" maxlength="33">
+    <input type="text" id="bottom-text" maxlength="33">
+    <input type="hidden" name="path" value="{{data}}">
+    <input type="submit" value="save" id="save">
+ 
+</form>
+ 
+
+<!-- 1-faire appel à une des functions createimage
+2 faire appel à la fonction imagettftext
+3- créer un button save (sauvgarder le meme en utilisant 
+les fonction de sauvgarder dans un dossier) imagepng()
+4- créer un button share -->
+
+
+
+
+{% endblock %}
