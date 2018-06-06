@@ -1,0 +1,18 @@
+
+#textoverimage{
+    width: 35%;
+    height: 20%;
+    /*margin-left: 1%;*/
+    margin-top: -450px;
+    position: absolute;
+    overflow-wrap: break-word;
+}
+
+#text{
+    font-family: 'arial';
+    font-size: 30px;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    width: 100%;
+}

@@ -41,7 +41,7 @@ function create($connect, $image){
 	$data = $statement->fetch();
 	$path = "./assets/img/upload/";
 	$data = $path.$image;
-
+	$data = resize($data);
 	// echo '<pre>';
 	// var_dump($data);
 	// echo '</pre>';
@@ -61,15 +61,11 @@ function lastMemes($connect){
 	// echo '</pre>';
 	return $data;
 }
-
-function createMeme($connect, $posted){
-	// var_dump($posted);
-
-	$path = $_POST['path'];
+function resize($path){
 	$filename = basename($path);
 	$info = pathinfo($filename);
 	$file_name =  basename($filename,'.'.$info['extension']);
-	$text = htmlspecialchars(strtoupper($_POST['top-text']));
+
 
 // RESIZE IMAGE //
 	$img = $path;
@@ -128,16 +124,20 @@ function createMeme($connect, $posted){
 		imagecopyresampled($pattern, $image, 0, 0, 0, 0, $dimX, $dimY, $dimensions[0], $dimensions[1]);
 		imagedestroy($image);
 		imagejpeg($pattern, $temp_img, 100);
-	}
+	}return $temp_img;
+}
 
-// var_dump($text);
+function createMeme($connect, $posted){
+
+	$temp_img = $_POST['path'];
+	$text = htmlspecialchars(strtoupper($_POST['top-text']));
 
 	$im = imagecreatefromjpeg($temp_img);
 	$white = imagecolorallocate($im, 255, 255, 255);
 	$grey = imagecolorallocate($im, 128, 128, 128);
 
-//$text = $_POST['text'];
-	$font = dirname(__FILE__) . '/fonts/arial.ttf';
+
+	$font ='./assets/fonts/arial.ttf';
 
 	imagettftext($im, 22, 0, 15, 40, $white, $font, $text);
 
@@ -162,6 +162,8 @@ function saveMeme($connect, $posted){
 	var_dump($posted);
 
 }
+
+
 function getMeme(){
 
 }
