@@ -2,7 +2,11 @@
 
     $serverName = 'localhost';
     $userName = 'root';
+
     $password = 'root';
+
+    $password = 'stagiaire';
+
     $dbname = 'memes';
 
     try {
