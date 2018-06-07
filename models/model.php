@@ -145,7 +145,19 @@ function createMeme($connect, $posted){
 	$grey = imagecolorallocate($im, 128, 128, 128);
 	$font ='./assets/fonts/arial.ttf';
 
-	imagettftext($im, 22, 0, 5, 40, $white, $font, $text);
+	// Retourne le rectangle entourant le texte
+	$taille = imagettfbbox(22, 0, $font, $text);
+	// echo '<pre>'; var_dump($taille); echo '</pre>'; die();
+	$width = $taille[2] + $taille[0];
+	$height = $taille[1] + $taille[7];
+
+	$x = (380 - $width) / 2;
+	$y = (50 - $height) / 2;
+
+	// Affichera $string
+	// imagettftext($image, 20, 0, $x, $y, $blanc, $font, $string);
+
+	imagettftext($im, 22, 0, $x, $y, $white, $font, $text);
 
 	//préparation pour stocker dans la base de données
 
