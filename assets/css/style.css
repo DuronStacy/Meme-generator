@@ -1,6 +1,13 @@
-
+body{
+    background-color: #bab8ba;
+    background-image: url("https://transparenttextures.com/patterns/diagmonds.png");
+    margin-top: 2%;
+}
+.row{
+    margin-top: 2%;
+}
 #textoverimageUp{
-    width: 35%;
+
     height: 30px;
     /*margin-left: 1%;*/
     margin-top: -450px;
@@ -8,25 +15,21 @@
     overflow-wrap: break-word;
 }
 
-
 #textoverimageUp p{
     font-family: 'arial';
     font-size: 30px;
     color: white;
     font-weight: bolder;
     text-align: center;
-    width: 100%;
+    
 }
 
 #textoverimageDown{
-    width: 35%;
+    margin-top: -50px;
     height: 30px;
-    /*margin-left: 1%;*/
-    margin-top: -80px;
     position: absolute;
     overflow-wrap: break-word;
 }
-
 
 #textoverimageDown p{
     font-family: 'arial';
