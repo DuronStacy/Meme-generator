@@ -34,6 +34,7 @@ function listCategories($connect, $categorie){
 	return $data;
 }
 
+<<<<<<< HEAD
 function getImageId($connect, $image){
 
 	$statement = $connect->prepare("SELECT id FROM images WHERE images.filename = ?");
@@ -53,11 +54,14 @@ function select($connect, $image){
 	// $statement->execute([$image]);
 	// $data = $statement->fetch();
 	$path = "./assets/img/";
+=======
+function select($connect, $image){
+
+	$path = "./assets/img/upload/";
+>>>>>>> 72d4600ddb851eef82874ca4aa100fdc2316aaba
 	$data = $path.$image;
 	$data = resize($data);
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
+
 	return $data;
 }
 
@@ -69,14 +73,15 @@ function lastMemes($connect){
 	$statement->execute();
 	$data = $statement->fetchAll();
 
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
 	return $data;
 }
 
 function resize($path){
+<<<<<<< HEAD
 	// echo '<pre>'; var_dump($path); echo '</pre>';
+=======
+
+>>>>>>> 72d4600ddb851eef82874ca4aa100fdc2316aaba
 	$filename = basename($path);
 	// echo '<pre>'; var_dump($filename); echo '</pre>'; 
 	$info = pathinfo($filename);
@@ -84,8 +89,6 @@ function resize($path){
 	$file_name =  basename($filename,'.'.$info['extension']);
 	// echo '<pre>'; var_dump($file_name); echo '</pre>';
 
-
-// RESIZE IMAGE //
 	$img = $path;
 	$temp_img = './assets/img/resized_'.$file_name.'.'.$info['extension'];
 	$width = 400;
@@ -155,7 +158,12 @@ function createMeme($connect, $posted){
 	$white = imagecolorallocate($im, 255, 255, 255);
 	$grey = imagecolorallocate($im, 128, 128, 128);
 	$font ='./assets/fonts/arial.ttf';
+<<<<<<< HEAD
 	imagettftext($im, 22, 0, 15, 40, $white, $font, $text);
+=======
+
+	imagettftext($im, 22, 0, 5, 40, $white, $font, $text);
+>>>>>>> 72d4600ddb851eef82874ca4aa100fdc2316aaba
 
 	//préparation pour stocker dans la base de données
 
