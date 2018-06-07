@@ -34,7 +34,6 @@ function listCategories($connect, $categorie){
 	return $data;
 }
 
-<<<<<<< HEAD
 function getImageId($connect, $image){
 
 	$statement = $connect->prepare("SELECT id FROM images WHERE images.filename = ?");
@@ -50,9 +49,6 @@ function getImageId($connect, $image){
 
 function select($connect, $image){
 
-	// $statement = $connect->prepare("SELECT * FROM images WHERE images.filename = ?");
-	// $statement->execute([$image]);
-	// $data = $statement->fetch();
 	$path = "./assets/img/";
 	$data = $path.$image;
 	$data = resize($data);
@@ -148,9 +144,6 @@ function createMeme($connect, $posted){
 	$white = imagecolorallocate($im, 255, 255, 255);
 	$grey = imagecolorallocate($im, 128, 128, 128);
 	$font ='./assets/fonts/arial.ttf';
-<<<<<<< HEAD
-	imagettftext($im, 22, 0, 15, 40, $white, $font, $text);
-=======
 
 	imagettftext($im, 22, 0, 5, 40, $white, $font, $text);
 
