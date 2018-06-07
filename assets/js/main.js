@@ -5,9 +5,9 @@ function drawTextup(){
     document.getElementById('text').innerHTML = text;
     var x = document.getElementById('image').naturalWidth;
     var y = document.getElementById('image').naturalHeight;
-    var down = -(y+22)+ "px";
-    console.log(down);
-    document.getElementById('textoverimageUp').style.marginTop = down;
+    var up = -(y)+ "px";
+    document.getElementById('textoverimageUp').style.marginTop = up;
+    document.getElementById('textoverimageUp').style.width = x + "px";
 
 }
 
@@ -16,11 +16,8 @@ function drawTextbottom(){
     text = text.toUpperCase();
     document.getElementById('text2').innerHTML = text;
     var y = document.getElementById('image').naturalHeight;
-    console.log(y);
-    var up = -(y-348);
-    console.log(up);
-    document.getElementById('textoverimageUp').style.marginTop = up;
-
+    var x = document.getElementById('image').naturalWidth;
+    document.getElementById('textoverimageDown').style.width = x + "px";
 }
 
 document.getElementById("changeColor").addEventListener("click", function(){
