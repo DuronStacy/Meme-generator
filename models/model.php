@@ -113,7 +113,7 @@ function resize($path){
 		$decalY = 0;
 	}
 
-// Création de l'image avec la librairie GD
+	// Création de l'image avec la librairie GD
 	if($useGD){
 		$pattern = imagecreatetruecolor($width, $height);
 		$type = mime_content_type($img);
@@ -139,25 +139,40 @@ function resize($path){
 function createMeme($connect, $posted){
 
 	$temp_img = $_POST['path'];
-	$text = htmlspecialchars(strtoupper($_POST['top-text']));
+	$image_taille = getimagesize($temp_img);
+	$width = $image_taille[0]; 
+	$height = $image_taille[1];
+	$x = $width / 2;
+	$y = $height - 10 ;
+
+	$text1 = htmlspecialchars(strtoupper($_POST['top-text']));
 	$im = imagecreatefromjpeg($temp_img);
 	$white = imagecolorallocate($im, 255, 255, 255);
 	$grey = imagecolorallocate($im, 128, 128, 128);
 	$font ='./assets/fonts/arial.ttf';
 
 	// Retourne le rectangle entourant le texte
-	$taille = imagettfbbox(22, 0, $font, $text);
-	// echo '<pre>'; var_dump($taille); echo '</pre>'; die();
-	$width = $taille[2] + $taille[0];
-	$height = $taille[1] + $taille[7];
+	$taille1 = imagettfbbox(22, 0, $font, $text1);
+	//centrer le top etxt
+	$width1 = $taille1[2] + $taille1[0];
+	$height1 = $taille1[1] + $taille1[7];
+	
+	$x1 = (380 - $width1) / 2;
+	$y1 = (50 - $height1) / 2;
+	imagettftext($im, 22, 0, $x1, $y1, $white, $font, $text1);
 
-	$x = (380 - $width) / 2;
-	$y = (50 - $height) / 2;
+	//centrer le bottom text 
 
-	// Affichera $string
-	// imagettftext($image, 20, 0, $x, $y, $blanc, $font, $string);
+	$text2 = htmlspecialchars(strtoupper($_POST['bottom-text']));
+	$taille2 = imagettfbbox(22, 0, $font, $text2);
+	
+	// $width2 = $taille2[2] + $taille2[0];
+	// $height2 = $taille2[1] + $taille2[7];
 
-	imagettftext($im, 22, 0, $x, $y, $white, $font, $text);
+	// $x2 = (380 - $width2) / 2;
+	// $y2 = (800 - $height2) / 2;
+
+	imagettftext($im, 22, 0, $x1, $y, $white, $font, $text2);	
 
 	//préparation pour stocker dans la base de données
 
