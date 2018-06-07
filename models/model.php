@@ -34,12 +34,25 @@ function listCategories($connect, $categorie){
 	return $data;
 }
 
-function create($connect, $image){
+function getImageId($connect, $image){
 
-	$statement = $connect->prepare("SELECT * FROM images WHERE images.filename = ?");
+	$statement = $connect->prepare("SELECT id FROM images WHERE images.filename = ?");
 	$statement->execute([$image]);
 	$data = $statement->fetch();
-	$path = "./assets/img/upload/";
+	
+	// echo '<pre>';
+	// var_dump($data);
+	// echo '</pre>';
+	return $data;
+	 
+}
+
+function select($connect, $image){
+
+	// $statement = $connect->prepare("SELECT * FROM images WHERE images.filename = ?");
+	// $statement->execute([$image]);
+	// $data = $statement->fetch();
+	$path = "./assets/img/";
 	$data = $path.$image;
 	$data = resize($data);
 	// echo '<pre>';
@@ -61,10 +74,15 @@ function lastMemes($connect){
 	// echo '</pre>';
 	return $data;
 }
+
 function resize($path){
+	// echo '<pre>'; var_dump($path); echo '</pre>';
 	$filename = basename($path);
+	// echo '<pre>'; var_dump($filename); echo '</pre>'; 
 	$info = pathinfo($filename);
+	// echo '<pre>'; var_dump($info); echo '</pre>'; 
 	$file_name =  basename($filename,'.'.$info['extension']);
+	// echo '<pre>'; var_dump($file_name); echo '</pre>';
 
 
 // RESIZE IMAGE //
@@ -124,6 +142,8 @@ function resize($path){
 		imagecopyresampled($pattern, $image, 0, 0, 0, 0, $dimX, $dimY, $dimensions[0], $dimensions[1]);
 		imagedestroy($image);
 		imagejpeg($pattern, $temp_img, 100);
+
+		// echo '<pre>'; var_dump($temp_img); echo '</pre>'; die();
 	}return $temp_img;
 }
 
@@ -131,49 +151,54 @@ function createMeme($connect, $posted){
 
 	$temp_img = $_POST['path'];
 	$text = htmlspecialchars(strtoupper($_POST['top-text']));
-
 	$im = imagecreatefromjpeg($temp_img);
 	$white = imagecolorallocate($im, 255, 255, 255);
 	$grey = imagecolorallocate($im, 128, 128, 128);
-
-
 	$font ='./assets/fonts/arial.ttf';
-
 	imagettftext($im, 22, 0, 15, 40, $white, $font, $text);
 
-	$memeName = time();
+	//préparation pour stocker dans la base de données
 
-// uploadMeme($memeName);
-	$pathMeme = "./assets/img/memes/".$memeName.".jpg";
+	$memeName = time();
+	//récupérer le nom du fiechier original
+	$filename = substr(basename($temp_img),8);
+	// echo '<pre>'; var_dump($filename); echo '</pre>'; die();
+	$id = getImageId($connect, $filename);
+	// echo '<pre>'; var_dump($id); echo '</pre>'; die();
+
+	uploadMeme($connect, $memeName, $id['id']);
+
+	$pathMeme = "./memes/".$memeName.".jpg";
 
 	imagejpeg($im, $pathMeme);
 
-//free memory
+	//free memory
 	imagedestroy($im);
 
-//delete temp resized image
+	//delete temp resized image
 	unlink($temp_img);
 
 	$data = $pathMeme;
 	return $data;
 }
 
-function saveMeme($connect, $posted){
-	var_dump($posted);
+function uploadMeme($connect, $memeName, $id){
+	// echo '<pre>'; var_dump($id); echo '</pre>'; die();
+	$date = new DateTime();
+	$date = $date->format('Y-m-d H:i:s');
+	// echo '<pre>'; var_dump($date); echo '</pre>'; die();
+	$meme = $connect->prepare("INSERT INTO memes (filename, date, images_id) VALUES (:memeName, :date, :image_id)");  
+	$meme->execute(array(
+		'memeName'=> $memeName, 
+		'date'=> $date,
+		'image_id'=> $id
+	));
 
 }
 
+// function getMemesImage ($connect,$image){
 
-function getMeme(){
-
-}
-
-// function egitImage($image){
-// 	// editer l'image pour la modifier
-// 	imagecreatetruecolor(int $width, int $height);
-// 	// sauvgarder l'image 
-// 	imagepng();
-
+// 	$statement = $connect->prepare("select filename")
 
 // }
 
