@@ -5,8 +5,6 @@
 
     $password = 'root';
 
-    $password = 'stagiaire';
-
     $dbname = 'memes';
 
     try {
