@@ -10,7 +10,7 @@
 
 {% for image in data %}
 
-<a href="?image={{image.filename}}"><img src="./assets/img/upload/{{ image.filename }}" alt=""></a>
+<a href="?image={{image.filename}}"><img style='height: 300px; width: 300px; object-fit: contain' src="./assets/img/{{ image.filename }}" alt=""></a>
 
 {% endfor %}
 

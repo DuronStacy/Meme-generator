@@ -36,7 +36,7 @@ function listCategories($connect, $categorie){
 
 function select($connect, $image){
 
-	$path = "./assets/img/upload/";
+	$path = "./assets/img/";
 	$data = $path.$image;
 	$data = resize($data);
 
@@ -135,7 +135,7 @@ function createMeme($connect, $posted){
 	$memeName = time();
 
 // uploadMeme($memeName);
-	$pathMeme = "./assets/img/memes/".$memeName.".jpg";
+	$pathMeme = "./memes/".$memeName.".jpg";
 
 	imagejpeg($im, $pathMeme);
 
