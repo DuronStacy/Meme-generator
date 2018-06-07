@@ -140,6 +140,7 @@ function createMeme($connect, $posted){
 
 	$temp_img = $_POST['path'];
 	$image_taille = getimagesize($temp_img);
+
 	$width = $image_taille[0]; 
 	$height = $image_taille[1];
 	$x = $width / 2;
@@ -153,7 +154,7 @@ function createMeme($connect, $posted){
 
 	// Retourne le rectangle entourant le texte
 	$taille1 = imagettfbbox(22, 0, $font, $text1);
-	//centrer le top etxt
+	//centrer le top text
 	$width1 = $taille1[2] + $taille1[0];
 	$height1 = $taille1[1] + $taille1[7];
 	
@@ -166,13 +167,13 @@ function createMeme($connect, $posted){
 	$text2 = htmlspecialchars(strtoupper($_POST['bottom-text']));
 	$taille2 = imagettfbbox(22, 0, $font, $text2);
 	
-	// $width2 = $taille2[2] + $taille2[0];
+	 $width2 = $taille2[2] + $taille2[0];
 	// $height2 = $taille2[1] + $taille2[7];
 
-	// $x2 = (380 - $width2) / 2;
+	 $x2 = (380 - $width2) / 2;
 	// $y2 = (800 - $height2) / 2;
 
-	imagettftext($im, 22, 0, $x1, $y, $white, $font, $text2);	
+	imagettftext($im, 22, 0, $x2, $y, $white, $font, $text2);	
 
 	//préparation pour stocker dans la base de données
 
