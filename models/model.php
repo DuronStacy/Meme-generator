@@ -54,11 +54,6 @@ function select($connect, $image){
 	// $statement->execute([$image]);
 	// $data = $statement->fetch();
 	$path = "./assets/img/";
-=======
-function select($connect, $image){
-
-	$path = "./assets/img/upload/";
->>>>>>> 72d4600ddb851eef82874ca4aa100fdc2316aaba
 	$data = $path.$image;
 	$data = resize($data);
 
@@ -77,11 +72,6 @@ function lastMemes($connect){
 }
 
 function resize($path){
-<<<<<<< HEAD
-	// echo '<pre>'; var_dump($path); echo '</pre>';
-=======
-
->>>>>>> 72d4600ddb851eef82874ca4aa100fdc2316aaba
 	$filename = basename($path);
 	// echo '<pre>'; var_dump($filename); echo '</pre>'; 
 	$info = pathinfo($filename);
@@ -163,7 +153,6 @@ function createMeme($connect, $posted){
 =======
 
 	imagettftext($im, 22, 0, 5, 40, $white, $font, $text);
->>>>>>> 72d4600ddb851eef82874ca4aa100fdc2316aaba
 
 	//préparation pour stocker dans la base de données
 
