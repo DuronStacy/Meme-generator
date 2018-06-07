@@ -1,8 +1,8 @@
 <?php 
 
     $serverName = 'localhost';
-    $userName = '';
-    $password = '';
+    $userName = 'dorothee';
+    $password = 'root';
     $dbname = 'memes';
 
     try {
