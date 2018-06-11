@@ -19,7 +19,7 @@ switch (true) {
 	ctrlListByCategorie($twig, $connect, $_POST);
 	break;
 
-	case isset($_POST['top-text']):
+	case isset($_POST['save']):
 	ctrlCreateMeme($twig, $connect, $_POST);
 	break;
 	

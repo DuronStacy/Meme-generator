@@ -30,7 +30,7 @@ function getImageId($connect, $image){
 	$statement->execute([$image]);
 	$data = $statement->fetch();
 	return $data;
-	 
+
 }
 
 function select($connect, $image){
@@ -124,11 +124,12 @@ function resize($path){
 		imagedestroy($image);
 		imagejpeg($pattern, $temp_img, 100);
 
-		// echo '<pre>'; var_dump($temp_img); echo '</pre>'; die();
 	}return $temp_img;
 }
 
 function createMeme($connect, $posted){
+
+	$data = [];
 
 	$temp_img = $_POST['path'];
 	$image_taille = getimagesize($temp_img);
@@ -140,9 +141,10 @@ function createMeme($connect, $posted){
 
 	$text1 = htmlspecialchars(strtoupper($_POST['top-text']));
 	$im = imagecreatefromjpeg($temp_img);
-	$white = imagecolorallocate($im, 255, 255, 255);
-	$grey = imagecolorallocate($im, 128, 128, 128);
-	$font ='./assets/fonts/arial.ttf';
+	$color = $_POST['color'];
+	$color = getColor($im, $color);
+
+	$font ='./assets/fonts/impact.ttf';
 
 	// Retourne le rectangle entourant le texte
 	$taille1 = imagettfbbox(22, 0, $font, $text1);
@@ -152,23 +154,21 @@ function createMeme($connect, $posted){
 	
 	$x1 = (380 - $width1) / 2;
 	$y1 = (50 - $height1) / 2;
-	imagettftext($im, 22, 0, $x1, $y1, $white, $font, $text1);
+	imagettftext($im, 25, 0, $x1, $y1, $color, $font, $text1);
 
 	//centrer le bottom text 
-
 	$text2 = htmlspecialchars(strtoupper($_POST['bottom-text']));
 	$taille2 = imagettfbbox(22, 0, $font, $text2);
 	
-	 $width2 = $taille2[2] + $taille2[0];
+	$width2 = $taille2[2] + $taille2[0];
 	// $height2 = $taille2[1] + $taille2[7];
 
-	 $x2 = (380 - $width2) / 2;
+	$x2 = (380 - $width2) / 2;
 	// $y2 = (800 - $height2) / 2;
 
-	imagettftext($im, 22, 0, $x2, $y, $white, $font, $text2);	
+	imagettftext($im, 25, 0, $x2, $y, $color, $font, $text2);	
 
 	//préparation pour stocker dans la base de données
-
 	$memeName = time();
 	//récupérer le nom du fiechier original
 	$filename = substr(basename($temp_img),8);
@@ -178,10 +178,14 @@ function createMeme($connect, $posted){
 
 	uploadMeme($connect, $memeName, $id['id']);
 
+<<<<<<< HEAD
 
 	// uploadMeme($memeName);
 
+=======
+>>>>>>> d0e52b1290f39561e2d9b21647bc4bc04e6a5648
 	$pathMeme = "./memes/".$memeName.".jpg";
+	$dlMeme = $memeName.".jpg";
 
 	imagejpeg($im, $pathMeme);
 
@@ -191,9 +195,23 @@ function createMeme($connect, $posted){
 	//delete temp resized image
 	unlink($temp_img);
 
-	$data = $pathMeme;
+	array_push($data, ['path' => $pathMeme], ['name' => $dlMeme]);
+	var_dump($data);
+
+
 	return $data;
 }
+
+function getColor($im, $color){
+
+	$hex = $color;
+	$hex = ltrim($hex,'#');
+	$a = hexdec(substr($hex,0,2));
+	$b = hexdec(substr($hex,2,2));
+	$c = hexdec(substr($hex,4,2));
+	return imagecolorallocate($im, $a, $b, $c);
+}
+
 
 function uploadMeme($connect, $memeName, $id){
 	// echo '<pre>'; var_dump($id); echo '</pre>'; die();

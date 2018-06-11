@@ -2,9 +2,13 @@
 
 {% block content %}
 
-<img src="{{data}}" alt="GENERATE IMAGE">
+<img src="{{data[0]['path']}}" alt="GENERATE IMAGE">
+
 
 <h1>Partagez !</h1>
+
+<a class="btn btn-danger btn-lg" href="{{data[0]['path']}}" download="{{data[1]['name']}}">Download</a>
+<button type="submit" class="btn btn-danger btn-lg" onclick="window.open('{{data[0]['path']}}')">Open Image</button>
 
 <!-- Générer le liens !-->
 

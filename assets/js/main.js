@@ -20,19 +20,25 @@ function drawTextbottom(){
     document.getElementById('textoverimageDown').style.width = x + "px";
 }
 
-document.getElementById("changeColor").addEventListener("click", function(){
-    var text = document.getElementById('text');
-    var text2 = document.getElementById('text2');
+var colorWell
+var defaultColor = "#FFFFFF";
 
-    if (text.style.color == "white") {
-        text.style.color = "black";
-    }else{
-        text.style.color = "white";
-    }
+window.addEventListener("load", startup, false);
+function startup() {
+  colorWell = document.querySelector("#colorWell");
+  colorWell.value = defaultColor;
+  colorWell.addEventListener("input", updateFirst, false);
+  colorWell.addEventListener("change", updateAll, false);
+  colorWell.select();
+}
+function updateFirst(event) {
+  var p = document.getElementById("textoverimageUp");
 
-    if (text2.style.color == "white") {
-        text2.style.color = "black";
-    }else{
-        text2.style.color = "white";
-    }
-});
+  if (p) {
+    p.style.color = event.target.value;
+  }
+}function updateAll(event) {
+  document.querySelectorAll("p").forEach(function(p) {
+    p.style.color = event.target.value;
+  });
+} 

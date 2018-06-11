@@ -1,5 +1,8 @@
 <?php 
+    
+    // ADD YOUR INFOS AND RENAME TO connect.php
 
+<<<<<<< HEAD:models/connect.php
     $serverName = 'localhost';
     $userName = 'root';
     $password = 'stagiaire';
@@ -7,6 +10,12 @@
     // $userName = 'rashay';
     // $password = 'Et6GMIhBxj';
     // $dbname = 'rashay_memes';
+=======
+    $serverName = '';
+    $userName = '';
+    $password = '';
+    $dbname = '';
+>>>>>>> d0e52b1290f39561e2d9b21647bc4bc04e6a5648:models/connect.php.dist
 
     try {
        
