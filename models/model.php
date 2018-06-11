@@ -137,6 +137,8 @@ function resize($path){
 
 function createMeme($connect, $posted){
 
+	$data = [];
+
 	$temp_img = $_POST['path'];
 	$image_taille = getimagesize($temp_img);
 
@@ -185,6 +187,7 @@ function createMeme($connect, $posted){
 	uploadMeme($connect, $memeName, $id['id']);
 
 	$pathMeme = "./memes/".$memeName.".jpg";
+	$dlMeme = $memeName.".jpg";
 
 	imagejpeg($im, $pathMeme);
 
@@ -194,7 +197,10 @@ function createMeme($connect, $posted){
 	//delete temp resized image
 	unlink($temp_img);
 
-	$data = $pathMeme;
+	array_push($data, ['path' => $pathMeme], ['name' => $dlMeme]);
+	var_dump($data);
+
+
 	return $data;
 }
 
