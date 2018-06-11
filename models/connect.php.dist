@@ -1,9 +1,11 @@
 <?php 
+    
+    // ADD YOUR INFOS AND RENAME TO connect.php
 
-    $serverName = 'localhost';
-    $userName = 'dorothee';
-    $password = 'root';
-    $dbname = 'memes';
+    $serverName = '';
+    $userName = '';
+    $password = '';
+    $dbname = '';
 
     try {
        
