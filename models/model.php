@@ -178,12 +178,6 @@ function createMeme($connect, $posted){
 
 	uploadMeme($connect, $memeName, $id['id']);
 
-<<<<<<< HEAD
-
-	// uploadMeme($memeName);
-
-=======
->>>>>>> d0e52b1290f39561e2d9b21647bc4bc04e6a5648
 	$pathMeme = "./memes/".$memeName.".jpg";
 	$dlMeme = $memeName.".jpg";
 
