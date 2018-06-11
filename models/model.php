@@ -5,12 +5,6 @@ function ListImages($connect){
 	$statement = $connect->prepare("SELECT * FROM images");
 	$statement->execute();
 	$data = $statement->fetchAll();
-	
-	
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
-
 	return $data;
 }
 
@@ -27,10 +21,6 @@ function listCategories($connect, $categorie){
 	));
 	$data = $statement->fetchAll();
 
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
-
 	return $data;
 }
 
@@ -39,10 +29,6 @@ function getImageId($connect, $image){
 	$statement = $connect->prepare("SELECT id FROM images WHERE images.filename = ?");
 	$statement->execute([$image]);
 	$data = $statement->fetch();
-	
-	// echo '<pre>';
-	// var_dump($data);
-	// echo '</pre>';
 	return $data;
 	 
 }
@@ -50,20 +36,26 @@ function getImageId($connect, $image){
 function select($connect, $image){
 
 	$path = "./assets/img/";
-	$data = $path.$image;
-	$data = resize($data);
-
+	$data1 = $path.$image;
+	$data1 = resize($data1);
+	$id = getImageId($connect, $image);
+	$lastMemes = lastMemes($connect, $id);
+	$data = [];
+	array_push($data, ['path'=>$data1], ['lastMemes'=>$lastMemes]);	
+		
 	return $data;
 }
 
 
-function lastMemes($connect){
-
-	$request = "SELECT * FROM `memes` ORDER BY id DESC LIMIT 10";
+function lastMemes($connect, $id){
+	// echo '<pre>'; var_dump($id); echo '</pre>'; die();
+	$request = "SELECT filename FROM `memes` WHERE images_id = :id ORDER BY id DESC LIMIT 10";
 	$statement = $connect->prepare($request);
-	$statement->execute();
+	$statement->execute([
+		'id' => $id['id']
+	]); 
 	$data = $statement->fetchAll();
-
+	// echo '<pre>'; var_dump($data); echo '</pre>'; die();
 	return $data;
 }
 
@@ -187,7 +179,7 @@ function createMeme($connect, $posted){
 	uploadMeme($connect, $memeName, $id['id']);
 
 
-// uploadMeme($memeName);
+	// uploadMeme($memeName);
 
 	$pathMeme = "./memes/".$memeName.".jpg";
 
@@ -216,12 +208,6 @@ function uploadMeme($connect, $memeName, $id){
 	));
 
 }
-
-// function getMemesImage ($connect,$image){
-
-// 	$statement = $connect->prepare("select filename")
-
-// }
 
 
 ?>

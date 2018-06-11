@@ -7,7 +7,7 @@
 
 		<form method="POST" action="./index.php" >
 
-			<img id="image"class="img-thumbnail" src="{{data}}" alt=""> 
+			<img id="image"class="img-thumbnail" src="{{data[0]['path']}}" alt=""> 
 
 			<div id="textoverimageUp">
 				<p id="text"></p>
@@ -50,14 +50,13 @@
 
 </div>
 
+<div class="row justify-content-center">
+	{% for image in data[1]['lastMemes'] %}
 
-<!-- 1-faire appel à une des functions createimage
-2 faire appel à la fonction imagettftext
-3- créer un button save (sauvgarder le meme en utilisant 
-les fonction de sauvgarder dans un dossier) imagepng()
-4- créer un button share -->
-
-
+		<img style='height: 300px; width: 300px; object-fit: contain'  src="./memes/{{ image['filename']}}.jpg">
+			
+	{% endfor %}
+	</div>
 
 
 {% endblock %}

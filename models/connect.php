@@ -4,6 +4,9 @@
     $userName = 'root';
     $password = 'stagiaire';
     $dbname = 'memes';
+    // $userName = 'rashay';
+    // $password = 'Et6GMIhBxj';
+    // $dbname = 'rashay_memes';
 
     try {
        
