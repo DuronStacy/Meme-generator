@@ -133,7 +133,7 @@ function createMeme($connect, $posted){
 
 	$temp_img = $_POST['path'];
 	$image_taille = getimagesize($temp_img);
-
+	
 	$width = $image_taille[0]; 
 	$height = $image_taille[1];
 	$x = $width / 2;
