@@ -7,16 +7,16 @@ function ctrlListImages($twig, $connect) {
 	echo $twig->render('home.html', ['data' => ListImages($connect)]);
 }
 
-function ctrlSelectImage($twig, $connect, $image){
-	echo $twig->render('create.html', ['data' => select($connect, $image)]);
+function ctrlSelectImage($twig, $connect, $image, $msg){
+	echo $twig->render('create.html', ['data' => select($connect, $image), 'message'=> $msg]);
 }
 
 function ctrlListByCategorie($twig, $connect, $categorie){
 	echo $twig->render('filter.html', ['data' => listCategories($connect, $categorie)]);
 }
 
-// function ctrlLastMemes($twig, $connect){
-// 	echo $twig->render('create.html', ['data1' => lastMemes($connect)]);
+// function ctrlText($twig, $connect){
+// 	echo $twig->render('create.html', ['massage' => "please enter text"]);
 // }
 
 function ctrlCreateMeme($twig, $connect, $posted){

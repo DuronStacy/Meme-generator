@@ -42,7 +42,7 @@ function select($connect, $image){
 	$lastMemes = lastMemes($connect, $id);
 	$data = [];
 	array_push($data, ['path'=>$data1], ['lastMemes'=>$lastMemes]);	
-		
+	var_dump($data[0]['path']);	
 	return $data;
 }
 
@@ -60,6 +60,7 @@ function lastMemes($connect, $id){
 }
 
 function resize($path){
+	
 	$filename = basename($path);
 	// echo '<pre>'; var_dump($filename); echo '</pre>'; 
 	$info = pathinfo($filename);
@@ -67,8 +68,10 @@ function resize($path){
 	$file_name =  basename($filename,'.'.$info['extension']);
 	// echo '<pre>'; var_dump($file_name); echo '</pre>';
 
+	
 	$img = $path;
 	$temp_img = './assets/img/resized_'.$file_name.'.'.$info['extension'];
+
 	$width = 400;
 	$height = 0;
 	$useGD = TRUE;
@@ -124,7 +127,8 @@ function resize($path){
 		imagedestroy($image);
 		imagejpeg($pattern, $temp_img, 100);
 
-	}return $temp_img;
+	}
+	return $temp_img;
 }
 
 function createMeme($connect, $posted){
@@ -187,10 +191,10 @@ function createMeme($connect, $posted){
 	imagedestroy($im);
 
 	//delete temp resized image
-	unlink($temp_img);
+	 unlink($temp_img);
 
 	array_push($data, ['path' => $pathMeme], ['name' => $dlMeme]);
-	var_dump($data);
+	// var_dump($data);
 
 
 	return $data;
