@@ -7,7 +7,7 @@
 
 		<form method="POST" action="{{baseUrl('index.php')}}" >
 
-			<img id="image"class="img-thumbnail" src="{{ baseUrl('assets/img/') }}{{data[0]['path']}}" alt=""> 
+			<img id="image" src="{{ baseUrl('assets/img/') }}{{data[0]['path']}}" alt=""> 
 
 			<div id="textoverimageUp">
 				<p id="text"></p>
@@ -46,12 +46,14 @@
 </div>
 
 <div class="row justify-content-center">
-	{% for image in data[1]['lastMemes'] %}
+	<div class="col-md-12">
+		{% for image in data[1]['lastMemes'] %}
 
 		<img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('memes/') }}{{ image['filename']}}.jpg">
-			
-	{% endfor %}
+
+		{% endfor %}
 	</div>
+</div>
 
 
 {% endblock %}
