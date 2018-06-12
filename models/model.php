@@ -37,7 +37,7 @@ function select($connect, $image){
 
 	// $path = "./assets/img/";
 	// $data1 = $path.$image;
-	// $data1 = resize($image);
+	//$data1 = resize($image);
 	$id = getImageId($connect, $image);
 	$lastMemes = lastMemes($connect, $id);
 	$data = [];
@@ -153,7 +153,7 @@ function createMeme($connect, $posted){
 	$font ='./assets/fonts/impact.ttf';
 
 	// Retourne le rectangle entourant le texte
-	$taille1 = imagettfbbox(22, 0, $font, $text1);
+	$taille1 = imagettfbbox(25, 0, $font, $text1);
 	//centrer le top text
 	$width1 = $taille1[2] + $taille1[0];
 	$height1 = $taille1[1] + $taille1[7];
