@@ -35,14 +35,14 @@ function getImageId($connect, $image){
 
 function select($connect, $image){
 
-	$path = "./assets/img/";
-	$data1 = $path.$image;
-	$data1 = resize($data1);
+	// $path = "./assets/img/";
+	// $data1 = $path.$image;
+	// $data1 = resize($image);
 	$id = getImageId($connect, $image);
 	$lastMemes = lastMemes($connect, $id);
 	$data = [];
-	array_push($data, ['path'=>$data1], ['lastMemes'=>$lastMemes]);	
-	var_dump($data[0]['path']);	
+	array_push($data, ['path'=>$image], ['lastMemes'=>$lastMemes]);	
+	// var_dump($data[0]['path']);	
 	return $data;
 }
 
@@ -59,83 +59,85 @@ function lastMemes($connect, $id){
 	return $data;
 }
 
-function resize($path){
+// function resize($path){
 	
-	$filename = basename($path);
-	// echo '<pre>'; var_dump($filename); echo '</pre>'; 
-	$info = pathinfo($filename);
-	// echo '<pre>'; var_dump($info); echo '</pre>'; 
-	$file_name =  basename($filename,'.'.$info['extension']);
-	// echo '<pre>'; var_dump($file_name); echo '</pre>';
+// 	$filename = basename($path);
+// 	// echo '<pre>'; var_dump($filename); echo '</pre>'; 
+// 	$info = pathinfo($filename);
+// 	// echo '<pre>'; var_dump($info); echo '</pre>'; 
+// 	$file_name =  basename($filename,'.'.$info['extension']);
+// 	// echo '<pre>'; var_dump($file_name); echo '</pre>';
 
-	
-	$img = $path;
-	$temp_img = './assets/img/resized_'.$file_name.'.'.$info['extension'];
+// 	$path1 = "./assets/img/";
+// 	$img = $path1.$path;
+// 	var_dump($img); 
+// 	$temp_img = './assets/img/resized_'.$file_name.'.'.$info['extension'];
 
-	$width = 400;
-	$height = 0;
-	$useGD = TRUE;
+// 	$width = 400;
+// 	$height = 0;
+// 	$useGD = TRUE;
 
-	$dimensions = getimagesize($img);
-	$ratio      = $dimensions[0] / $dimensions[1];
+// 	$dimensions = getimagesize($img);
+// 	$ratio      = $dimensions[0] / $dimensions[1];
 
-// Calcul des dimensions si 0 passé en paramètre
-	if($width == 0 && $height == 0){
-		$width = $dimensions[0];
-		$height = $dimensions[1];
-	}elseif($height == 0){
-		$height = round($width / $ratio);
-	}elseif ($width == 0){
-		$width = round($height * $ratio);
-	}
+// // Calcul des dimensions si 0 passé en paramètre
+// 	if($width == 0 && $height == 0){
+// 		$width = $dimensions[0];
+// 		$height = $dimensions[1];
+// 	}elseif($height == 0){
+// 		$height = round($width / $ratio);
+// 	}elseif ($width == 0){
+// 		$width = round($height * $ratio);
+// 	}
 
-	if($dimensions[0] > ($width / $height) * $dimensions[1]){
-		$dimY = $height;
-		$dimX = round($height * $dimensions[0] / $dimensions[1]);
-		$decalX = ($dimX - $width) / 2;
-		$decalY = 0;
-	}
-	if($dimensions[0] < ($width / $height) * $dimensions[1]){
-		$dimX = $width;
-		$dimY = round($width * $dimensions[1] / $dimensions[0]);
-		$decalY = ($dimY - $height) / 2;
-		$decalX = 0;
-	}
-	if($dimensions[0] == ($width / $height) * $dimensions[1]){
-		$dimX = $width;
-		$dimY = $height;
-		$decalX = 0;
-		$decalY = 0;
-	}
+// 	if($dimensions[0] > ($width / $height) * $dimensions[1]){
+// 		$dimY = $height;
+// 		$dimX = round($height * $dimensions[0] / $dimensions[1]);
+// 		$decalX = ($dimX - $width) / 2;
+// 		$decalY = 0;
+// 	}
+// 	if($dimensions[0] < ($width / $height) * $dimensions[1]){
+// 		$dimX = $width;
+// 		$dimY = round($width * $dimensions[1] / $dimensions[0]);
+// 		$decalY = ($dimY - $height) / 2;
+// 		$decalX = 0;
+// 	}
+// 	if($dimensions[0] == ($width / $height) * $dimensions[1]){
+// 		$dimX = $width;
+// 		$dimY = $height;
+// 		$decalX = 0;
+// 		$decalY = 0;
+// 	}
 
-	// Création de l'image avec la librairie GD
-	if($useGD){
-		$pattern = imagecreatetruecolor($width, $height);
-		$type = mime_content_type($img);
-		switch (substr($type, 6)) {
-			case 'jpeg':
-			$image = imagecreatefromjpeg($img);
-			break;
-			case 'gif':
-			$image = imagecreatefromgif($img);
-			break;
-			case 'png':
-			$image = imagecreatefrompng($img);
-			break;
-		}
-		imagecopyresampled($pattern, $image, 0, 0, 0, 0, $dimX, $dimY, $dimensions[0], $dimensions[1]);
-		imagedestroy($image);
-		imagejpeg($pattern, $temp_img, 100);
+// 	// Création de l'image avec la librairie GD
+// 	if($useGD){
+// 		$pattern = imagecreatetruecolor($width, $height);
+// 		$type = mime_content_type($img);
+// 		switch (substr($type, 6)) {
+// 			case 'jpeg':
+// 			$image = imagecreatefromjpeg($img);
+// 			break;
+// 			case 'gif':
+// 			$image = imagecreatefromgif($img);
+// 			break;
+// 			case 'png':
+// 			$image = imagecreatefrompng($img);
+// 			break;
+// 		}
+// 		imagecopyresampled($pattern, $image, 0, 0, 0, 0, $dimX, $dimY, $dimensions[0], $dimensions[1]);
+// 		imagedestroy($image);
+// 		imagejpeg($pattern, $temp_img, 100);
 
-	}
-	return $temp_img;
-}
+// 	}
+// 	return $temp_img;
+// }
 
 function createMeme($connect, $posted){
 
 	$data = [];
 
 	$temp_img = $_POST['path'];
+	
 	$image_taille = getimagesize($temp_img);
 	
 	$width = $image_taille[0]; 
@@ -175,7 +177,8 @@ function createMeme($connect, $posted){
 	//préparation pour stocker dans la base de données
 	$memeName = time();
 	//récupérer le nom du fiechier original
-	$filename = substr(basename($temp_img),8);
+	$filename = basename($temp_img);
+
 	// echo '<pre>'; var_dump($filename); echo '</pre>'; die();
 	$id = getImageId($connect, $filename);
 	// echo '<pre>'; var_dump($id); echo '</pre>'; die();
@@ -191,10 +194,10 @@ function createMeme($connect, $posted){
 	imagedestroy($im);
 
 	//delete temp resized image
-	 unlink($temp_img);
+	 //unlink($temp_img);
 
 	array_push($data, ['path' => $pathMeme], ['name' => $dlMeme]);
-	// var_dump($data);
+	
 
 
 	return $data;
