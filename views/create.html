@@ -8,7 +8,7 @@
 
 		<form method="POST" action="{{baseUrl('index.php')}}" >
 
-			<img id="image" src="{{ baseUrl('assets/img/') }}{{data[0]['path']}}" alt=""> 
+			<img id="image" src="{{ baseUrl('assets/img/')}}{{data[0]['path']}}" alt=""> 
 
 			<div id="textoverimageUp">
 				<p id="text"></p>
@@ -23,13 +23,13 @@
 
 		<div class="col-md-6 offset-md-2">
 
-			<input class="form-control" type="text" id="top-text" name ="top-text" onkeyup="drawTextup()" maxlength="17">
+			<input class="form-control" type="text" id="top-text" name ="top-text" onkeyup="drawTextup()" maxlength="16">
 
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6 offset-md-2">
-			<input class="form-control" type="text" name="bottom-text" id="bottom-text" onkeyup="drawTextbottom()" maxlength="17">
+			<input class="form-control" type="text" name="bottom-text" id="bottom-text" onkeyup="drawTextbottom()" maxlength="16">
 			<input type="hidden" name="path" value="{{ baseUrl('assets/img/') }}{{data[0]['path']}}">
 			<input class="?" type="color" name="color" id="colorWell" value="#FFFFFF">
 		</div>
@@ -50,7 +50,7 @@
 	<div class="col-md-12">
 		{% for image in data[1]['lastMemes'] %}
 
-		<img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('memes/') }}{{ image['filename']}}.jpg">
+		<img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('memes/')}}{{ image['filename']}}.jpg">
 
 		{% endfor %}
 	</div>

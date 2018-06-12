@@ -2,19 +2,19 @@
 
 {% block content %}
 
-<img src="{{data[0]['path']}}" alt="GENERATE IMAGE">
+<img src="{{baseUrl('memes/')}}{{data[1]['name']}}" alt="GENERATE IMAGE">
 
 
 <h1>Partagez !</h1>
 
-<a class="btn btn-danger btn-lg" href="{{data[0]['path']}}" download="{{data[1]['name']}}">Download</a>
+<a class="btn btn-danger btn-lg" href="{{baseUrl('memes/')}}{{data[1]['name']}}" download="{{data[1]['name']}}">Download</a>
 <button type="submit" class="btn btn-danger btn-lg" onclick="window.open('{{data[0]['path']}}')">Open Image</button>
 
 <!-- Générer le liens !-->
 
 <ul>
 	<li>
-		<a href="https://www.facebook.com/sharer/sharer.php?u="><img src="/meme-generator/assets/icon/button-share-facebook.png" height="100"></a> 
+		<a href="https://www.facebook.com/sharer/sharer.php?u={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-facebook.png" height="100"></a> 
 	</li>
 	<li>
 		<a href="https://twitter.com/home?status=METTRELIENSICI"><img src="/meme-generator/assets/icon/button-share-twitter.png" height="100"></a> 

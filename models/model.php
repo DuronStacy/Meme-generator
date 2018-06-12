@@ -199,7 +199,6 @@ function createMeme($connect, $posted){
 	array_push($data, ['path' => $pathMeme], ['name' => $dlMeme]);
 	
 
-
 	return $data;
 }
 

@@ -1,31 +1,32 @@
 
 function drawTextup(){
-    var text = document.getElementById('top-text').value;
-    text = text.toUpperCase();
-    document.getElementById('text').innerHTML = text;
-    var x = document.getElementById('image').naturalWidth;
-    var y = document.getElementById('image').naturalHeight;
-    var up = -(y)+ "px";
-    document.getElementById('textoverimageUp').style.marginTop = up;
-    document.getElementById('textoverimageUp').style.width = x + "px";
+  var text = document.getElementById('top-text').value;
+  text = text.toUpperCase();
+  document.getElementById('text').innerHTML = text;
+  var x = document.getElementById('image').naturalWidth;
+  var y = document.getElementById('image').naturalHeight;
+  var up = -(y)+ "px";
+  document.getElementById('textoverimageUp').style.marginTop = up;
+  document.getElementById('textoverimageUp').style.width = x + "px";
 
 }
 
 function drawTextbottom(){
-    var text = document.getElementById('bottom-text').value;
-    text = text.toUpperCase();
-    document.getElementById('text2').innerHTML = text;
-    var y = document.getElementById('image').naturalHeight;
-    var x = document.getElementById('image').naturalWidth;
-    document.getElementById('textoverimageDown').style.width = x + "px";
+  var text = document.getElementById('bottom-text').value;
+  text = text.toUpperCase();
+  document.getElementById('text2').innerHTML = text;
+  var y = document.getElementById('image').naturalHeight;
+  var x = document.getElementById('image').naturalWidth;
+  document.getElementById('textoverimageDown').style.width = x + "px";
 }
+console.log(document.querySelector("#colorWell").value);
 
-var colorWell
 var defaultColor = "#FFFFFF";
 
 window.addEventListener("load", startup, false);
 function startup() {
-  colorWell = document.querySelector("#colorWell");
+  var defaultColor = "#FFFFFF";
+  var colorWell = document.querySelector("#colorWell");
   colorWell.value = defaultColor;
   colorWell.addEventListener("input", updateFirst, false);
   colorWell.addEventListener("change", updateAll, false);
