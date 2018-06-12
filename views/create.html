@@ -48,7 +48,7 @@
 <div class="row justify-content-center">
 	{% for image in data[1]['lastMemes'] %}
 
-		<img style='height: 300px; width: 300px; object-fit: contain'  src="./memes/{{ image['filename']}}.jpg">
+		<img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('memes/') }}{{ image['filename']}}.jpg">
 			
 	{% endfor %}
 	</div>
