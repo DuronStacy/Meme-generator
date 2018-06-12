@@ -3,21 +3,21 @@
 <div class="row justify-content-center">
 
 	<form method="POST">
-		<button name="categorie" class="btn btn-primary" value="angry">Angry</button>
-		<button name="categorie" class="btn btn-primary" value="desperate">Desperate</button>
-		<button name="categorie" class="btn btn-primary" value="happy">Happy</button>
-		<button name="categorie" class="btn btn-primary" value="loving">Loving</button>
-		<button name="categorie" class="btn btn-primary" value="out">Out</button>
-		<button name="categorie" class="btn btn-primary" value="sad">Sad</button>
-		<button name="categorie" class="btn btn-primary" value="scared">Scared</button>
-		<button name="categorie" class="btn btn-primary" value="shocked">Shocked</button>
-		<button name="categorie" class="btn btn-primary" value="tired">Tired</button>
+		<button name="categorie" class="btn" value="angry">Angry</button>
+		<button name="categorie" class="btn" value="desperate">Desperate</button>
+		<button name="categorie" class="btn" value="happy">Happy</button>
+		<button name="categorie" class="btn" value="loving">Loving</button>
+		<button name="categorie" class="btn" value="out">Out</button>
+		<button name="categorie" class="btn" value="sad">Sad</button>
+		<button name="categorie" class="btn" value="scared">Scared</button>
+		<button name="categorie" class="btn" value="shocked">Shocked</button>
+		<button name="categorie" class="btn" value="tired">Tired</button>
 	</form>
 </div>
 <div class="row justify-content-center">
 {% for image in data %}
 
-<a href="?image={{image.filename}}"><img style='height: 300px; width: 300px; object-fit: contain' src="./assets/img/{{ image.filename }}" alt=""></a>
+<a href="?image={{image.filename}}"><img style='height: 150px; width: 150px'; src="./assets/img/{{ image.filename }}" alt=""></a>
 
 {% endfor %}
 </div>
