@@ -33,6 +33,7 @@ body{
 }
 
 #containerImg p {
+    color: white;
     font-family: "impact";
     position: absolute;
     font-weight: bolder;
@@ -48,12 +49,8 @@ body{
 #containerImg p.bas {
     bottom: -20px;
 }
-
-
-
 .test{
     border: 1px solid white;
-
 }
 
 li{
@@ -68,17 +65,13 @@ input[type=color].form-control {
     height: 50px;
     display: flex;
     justify-content:center;
-    font-family: 'BioRhyme Expanded', serif;
-    flex-shrink: 0;
+    font-family: 'BioRhyme Expanded', serif;  
     background-color: grey;
     box-shadow: 0px 3px 6px black inset;
-    position: fixed;
-    bottom: 0px;
-    margin-bottom: 0px;
-    float:none;
-    width: 100%
-
 }
+ #allcontent{
+     height: 35em
+ }
 
 .footer p {
     padding-top: 1%;
