@@ -48,13 +48,50 @@
 
 <div class="row justify-content-center">
 	<div class="col-md-12">
-		{% for image in data[1]['lastMemes'] %}
-
-		<img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('memes/') }}{{ image['filename']}}.jpg">
-
-		{% endfor %}
+		<div class="carousel-wrap">
+			<div class="owl-carousel">
+				{% for image in data[1]['lastMemes'] %}
+					<div class ="item">
+						<img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('memes/') }}{{ image['filename']}}.jpg">
+					</div>
+			
+				{% endfor %}
+			</div>
+		</div>	
 	</div>
 </div>
 
 
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(function() {
+			$('.owl-carousel').owlCarousel({
+			loop: true,
+			autoPlay: 3000,
+			margin: 10,
+			nav: true,
+			navText: [
+				"<i class='fa fa-caret-left'></i>",
+				"<i class='fa fa-caret-right'></i>"
+			],
+			autoplay: true,
+			autoplayHoverPause: true,
+			responsive: {
+				0: {
+				items: 1
+				},
+				600: {
+				items: 3
+				},
+				1000: {
+				items: 3
+				}
+			}
+			})
+
+		});
+
+	</script>
 {% endblock %}
