@@ -14,18 +14,16 @@
 		<button name="categorie" class="btn" value="tired">Tired</button>
 	</form>
 </div>
-<div class="row justify-content-center">
-{% for image in data %}
+<div class="row">
+    <div class="card-columns">
+        {% for image in data %}
 
+        <div class="card">
+            <a href="{{baseUrl('image/')}}{{image.filename}}"><img class="card-img-top img-fluid" src="{{ baseUrl('assets/img/') }}{{ image.filename }}"></a>
+        </div>   
 
-
-<a href="{{baseUrl('image/')}}{{image.filename}}"><img style='height: 150px; width: 150px'; src="{{baseUrl('assets/img/')}}{{ image.filename }}" alt=""></a>
-
-
-
-
-
-{% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 
