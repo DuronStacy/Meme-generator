@@ -1,30 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row">
+	<div class="col-6 text-center offset-md-3" >
+		<img src="{{baseUrl('memes/')}}{{data[1]['name']}}" alt="GENERATE IMAGE">
+	</div>
+</div>
+<div class="row">
+	<div class="col-6 text-center offset-md-3" >
+		<h1>Partagez !</h1>
 
-<img src="{{baseUrl('memes/')}}{{data[1]['name']}}" alt="GENERATE IMAGE">
-
-<h1>Partagez !</h1>
-
-<a class="btn btn-danger btn-lg" href="{{baseUrl('memes/')}}{{data[1]['name']}}" download="{{data[1]['name']}}">Download</a>
-<button type="submit" class="btn btn-danger btn-lg" onclick="window.open('{{baseUrl('memes/')}}{{data[1]['name']}}')">Open Image</button>
+		<a class="btn btn-danger btn-lg" href="{{baseUrl('memes/')}}{{data[1]['name']}}" download="{{data[1]['name']}}">Download</a>
+		<button type="submit" class="btn btn-danger btn-lg" onclick="window.open('{{baseUrl('memes/')}}{{data[1]['name']}}')">Open Image</button>
+	</div>
+</div>
 
 <!-- Générer le liens !-->
+<div class="row">
+	<div class="col-6 text-center offset-md-3" >
+		<ul>
+			<li>
+				<a href="https://www.facebook.com/sharer/sharer.php?u={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-facebook.png" height="100"></a> 
+			</li>
+			<li>
+				<a href="https://twitter.com/home?status={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-twitter.png" height="100"></a> 
+			</li>
+			<li>
+				<a href="{https://plus.google.com/share?url={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-google.png" height="100"></a>
+			</li>
+			<li>
+				<a href="https://www.linkedin.com/shareArticle?mini=true&url={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-linkedin.png" height="100"></a>
+			</li>
+		</ul>
 
-<ul>
-	<li>
-		<a href="https://www.facebook.com/sharer/sharer.php?u={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-facebook.png" height="100"></a> 
-	</li>
-	<li>
-		<a href="https://twitter.com/home?status={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-twitter.png" height="100"></a> 
-	</li>
-	<li>
-		<a href="{https://plus.google.com/share?url={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-google.png" height="100"></a>
-	</li>
-	<li>
-		<a href="https://www.linkedin.com/shareArticle?mini=true&url={{baseUrl('memes/')}}{{data[1]['name']}}"><img src="/meme-generator/assets/icon/button-share-linkedin.png" height="100"></a>
-	</li>
-</ul>
-
-
+	</div>
+</div>
 {% endblock %}
