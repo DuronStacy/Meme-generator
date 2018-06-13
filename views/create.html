@@ -44,7 +44,6 @@
 
 </form>
 
-<<<<<<< HEAD
 <div class="row justify-content-center">
 	<div class="col-md-12">
 		<div class="carousel-wrap">
@@ -57,17 +56,6 @@
 				{% endfor %}
 			</div>
 		</div>	
-=======
-<div class="row">
-	<div class="card-columns">
-		{% for image in data[1]['lastMemes'] %}
-
-		<div class="card">
-			<a href="{{baseUrl('image/')}}{{image.filename}}"><img class="card-img-top img-fluid" src="{{ baseUrl('memes/')}}{{ image['filename']}}.jpg"></a>
-		</div>  
-
-		{% endfor %}
->>>>>>> 259b2fddab38e6223f6bb0d3dfaedc0e91918ced
 	</div>
 </div>
 
@@ -78,7 +66,7 @@
 		$(function() {
 			$('.owl-carousel').owlCarousel({
 			loop: true,
-			autoPlay: 3000,
+			autoPlay: 1000,
 			margin: 10,
 			nav: true,
 			navText: [
