@@ -25,16 +25,12 @@ function startup() {
 }
 
 function updateFirst(event) {
-  var p = document.getElementById("textoverimageUp");
+  var p = document.getElementById("haut");
 
   if (p) {
     p.style.color = event.target.value;
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 259b2fddab38e6223f6bb0d3dfaedc0e91918ced
 function updateAll(event) {
   document.querySelectorAll("p").forEach(function(p) {
     p.style.color = event.target.value;
