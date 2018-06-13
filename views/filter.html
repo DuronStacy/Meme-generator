@@ -17,7 +17,7 @@
 <div class="row justify-content-center">
 {% for image in data %}
 
-<a href="?image={{image.filename}}"><img style='height: 150px; width: 150px'; src="./assets/img/{{ image.filename }}" alt=""></a>
+<a href="{{baseUrl('image/')}}{{image.filename}}"><img style='height: 150px; width: 150px'; src="{{baseUrl('assets/img/')}}{{ image.filename }}" alt=""></a>
 
 {% endfor %}
 </div>
