@@ -42,7 +42,6 @@ function select($connect, $image){
 	$lastMemes = lastMemes($connect, $id);
 	$data = [];
 	array_push($data, ['path'=>$image], ['lastMemes'=>$lastMemes]);	
-	// var_dump($data[0]['path']);	
 	return $data;
 }
 
@@ -197,8 +196,6 @@ function createMeme($connect, $posted){
 	 //unlink($temp_img);
 
 	array_push($data, ['path' => $pathMeme], ['name' => $dlMeme]);
-	
-
 
 	return $data;
 }

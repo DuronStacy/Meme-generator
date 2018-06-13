@@ -1,36 +1,29 @@
 
 function drawTextup(){
-    var text = document.getElementById('top-text').value;
-    text = text.toUpperCase();
-    document.getElementById('text').innerHTML = text;
-    var x = document.getElementById('image').naturalWidth;
-    var y = document.getElementById('image').naturalHeight;
-    var up = -(y)+ "px";
-    document.getElementById('textoverimageUp').style.marginTop = up;
-    document.getElementById('textoverimageUp').style.width = x + "px";
+  var text = document.getElementById('top-text').value;
+  text = text.toUpperCase();
+  document.getElementById('haut').innerHTML = text;
 
 }
 
 function drawTextbottom(){
-    var text = document.getElementById('bottom-text').value;
-    text = text.toUpperCase();
-    document.getElementById('text2').innerHTML = text;
-    var y = document.getElementById('image').naturalHeight;
-    var x = document.getElementById('image').naturalWidth;
-    document.getElementById('textoverimageDown').style.width = x + "px";
+  var text = document.getElementById('bottom-text').value;
+  text = text.toUpperCase();
+  document.getElementById('bas').innerHTML = text;
 }
 
-var colorWell
-var defaultColor = "#FFFFFF";
+console.log(document.querySelector("#colorWell").value);
 
 window.addEventListener("load", startup, false);
 function startup() {
-  colorWell = document.querySelector("#colorWell");
+  var defaultColor = "#FFFFFF";
+  var colorWell = document.querySelector("#colorWell");
   colorWell.value = defaultColor;
   colorWell.addEventListener("input", updateFirst, false);
   colorWell.addEventListener("change", updateAll, false);
   colorWell.select();
 }
+
 function updateFirst(event) {
   var p = document.getElementById("textoverimageUp");
 
@@ -38,6 +31,10 @@ function updateFirst(event) {
     p.style.color = event.target.value;
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 259b2fddab38e6223f6bb0d3dfaedc0e91918ced
 function updateAll(event) {
   document.querySelectorAll("p").forEach(function(p) {
     p.style.color = event.target.value;

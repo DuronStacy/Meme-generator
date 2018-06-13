@@ -3,29 +3,27 @@
 <div class="row justify-content-center">
 
 	<form method="POST">
-		<button name="categorie" class="btn btn-primary" value="angry">Angry</button>
-		<button name="categorie" class="btn btn-primary" value="desperate">Desperate</button>
-		<button name="categorie" class="btn btn-primary" value="happy">Happy</button>
-		<button name="categorie" class="btn btn-primary" value="loving">Loving</button>
-		<button name="categorie" class="btn btn-primary" value="out">Out</button>
-		<button name="categorie" class="btn btn-primary" value="sad">Sad</button>
-		<button name="categorie" class="btn btn-primary" value="scared">Scared</button>
-		<button name="categorie" class="btn btn-primary" value="shocked">Shocked</button>
-		<button name="categorie" class="btn btn-primary" value="tired">Tired</button>
+		<button name="categorie" class="btn" value="angry">Angry</button>
+		<button name="categorie" class="btn" value="desperate">Desperate</button>
+		<button name="categorie" class="btn" value="happy">Happy</button>
+		<button name="categorie" class="btn" value="loving">Loving</button>
+		<button name="categorie" class="btn" value="out">Out</button>
+		<button name="categorie" class="btn" value="sad">Sad</button>
+		<button name="categorie" class="btn" value="scared">Scared</button>
+		<button name="categorie" class="btn" value="shocked">Shocked</button>
+		<button name="categorie" class="btn" value="tired">Tired</button>
 	</form>
 </div>
-<div class="row justify-content-center">
-{% for image in data %}
+<div class="row">
+    <div class="card-columns">
+        {% for image in data %}
 
+        <div class="card">
+            <a href="{{baseUrl('image/')}}{{image.filename}}"><img class="card-img-top img-fluid" src="{{ baseUrl('assets/img/') }}{{ image.filename }}"></a>
+        </div>   
 
-
-<a href="image/{{image.filename}}"><img style='height: 300px; width: 300px; object-fit: contain'  src="{{ baseUrl('assets/img/') }}{{ image.filename }}"></a>
-
-
-
-
-
-{% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 

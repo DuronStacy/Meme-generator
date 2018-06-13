@@ -12,9 +12,9 @@ $twig = new Twig_Environment($loader, [
 
 $twig->addFunction(new \Twig_SimpleFunction('baseUrl', function ($url) {
 
-  $rootUrl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+	$rootUrl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
 
-  return $rootUrl.$url;
+	return $rootUrl.$url;
 
 }));
 $msg = "";
@@ -30,24 +30,18 @@ switch (true) {
 	break;
 
 	case isset($_POST['save']):
-		if(($_POST['top-text'] !="") || ($_POST['bottom-text'] !="")){
-			ctrlCreateMeme($twig, $connect, $_POST);
-			
-			
-		}else{
+	if(($_POST['top-text'] !="") || ($_POST['bottom-text'] !="")){
+		ctrlCreateMeme($twig, $connect, $_POST);
+
+	}else{
 			// var_dump($_POST['path']); die();
-			$msg = "please enter text";
-			ctrlSelectImage($twig, $connect, basename($_POST['path']), $msg);
-			
-			
-		}
-		break;
+		$msg = "please enter text";
+		ctrlSelectImage($twig, $connect, basename($_POST['path']), $msg);
+	}
+	break;
 	
 	default:
 	ctrlListImages($twig, $connect);
-	// foreach(gd_info() as $key => $value) 
-	// echo "$key: <b>$value</b><br />"; 
-	// ctrlLastMemes($twig, $connect);
 	break;
 }
 

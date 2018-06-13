@@ -1,58 +1,143 @@
-body{
-    background-color: #bab8ba;
-    background-image: url("https://transparenttextures.com/patterns/diagmonds.png");
-    margin-top: 2%;
+@font-face{
+    font-family : "impact";
+    src : url('./fonts/impact.ttf');
 }
+
+body{
+   background-color: #bab8ba;
+   background-image: url("https://transparenttextures.com/patterns/diagmonds.png");
+   margin-top: 2%;
+   display: flex;
+   flex-direction: column;
+   flex: 1 0 auto;
+}
+
+.header{
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'BioRhyme Expanded', serif;
+}
+
+.logoHeader{
+    height: 100px;
+    width: 200px;
+}
+
 .row{
     margin-top: 2%;
 }
+#containerImg {
+    position: relative;
+    display: inline-block;
+}
 
+#containerImg p {
+    color: white;
+    font-family: "impact";
+    position: absolute;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+}
 
+#containerImg p.haut {
+    top: 0px;
+}
+
+#containerImg p.bas {
+    bottom: -20px;
+}
 .test{
-    height: 200px;
     border: 1px solid white;
 }
-#textoverimageUp{
-
-    height: 30px;
-    /*margin-left: 1%;*/
-    margin-top: -450px;
-    position: absolute;
-    overflow-wrap: break-word;
-}
-
-#textoverimageUp p{
-    font-family: 'arial';
-    font-size: 35px;
-    color: white;
-    font-weight: bolder;
-    text-align: center;
-    
-}
-
-#textoverimageDown{
-    margin-top: -50px;
-    height: 30px;
-    position: absolute;
-    overflow-wrap: break-word;
-}
-
-#textoverimageDown p{
-    font-family: 'arial';
-    font-size: 35px;
-    color: white;
-    font-weight: bolder;
-    text-align: center;
-    width: 100%;
-}
-
 
 li{
     list-style-type:none;
     display:inline-block;
 }
+input[type=color].form-control {
+    padding: 0px;
+}
 
+.footer{
+    height: 50px;
+    display: flex;
+    justify-content:center;
+    font-family: 'BioRhyme Expanded', serif;  
+    background-color: grey;
+    box-shadow: 0px 3px 6px black inset;
+}
+ #allcontent{
+     height: 35em
+ }
 
+.footer p {
+    padding-top: 1%;
+}
+
+.logoFooter{
+    height: 40px;
+    width: 30px;
+    padding-top: 25%;
+}
+
+@media (min-width:576px) {
+  .card-columns {
+    column-count: 2;
+}
+}
+@media (min-width:768px) {
+  .card-columns {
+    column-count: 3;
+}
+}
+@media (min-width:992px) {
+  .card-columns {
+    column-count: 4;
+}
+}
+@media (min-width:1200px) {
+  .card-columns {
+    column-count: 5;
+}
+}
+
+@media (max-width: 480px) {
+
+    .header{
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+        font-family: 'BioRhyme Expanded', serif;
+    }
+    h1{
+        font-size:75%;
+    }
+    .logoHeader{
+        height: 50%;
+        width: 25%;
+    }
+    .btn{
+        font-size: 75%;
+        font-family: 'BioRhyme Expanded', serif;
+        padding-left: 20px;
+
+    }
+    
+    .footer{
+        height: 3%;
+        display: flex;
+        justify-content: space-around;
+        font-family: 'BioRhyme Expanded', serif;
+    }
+
+    p{
+        font-size: 50%;
+    }
+
+}
 .carousel-wrap {
     margin: 90px auto;
     padding: 0 5%;
@@ -87,5 +172,3 @@ li{
   .owl-nav .owl-next {
     right: -30px;
   }
-
-
